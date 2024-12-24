@@ -13,7 +13,7 @@
         <div class="relative mx-auto">
           <NuxtLink :to="slotProps.data.linkTo">
             <img
-              class="w-full h-[60vh] object-cover object-center"
+              class="w-full max-h-[calc(100vh-96px)] object-contain object-center"
               :src="imageSrc(slotProps.data.imgPath)"
               :alt="slotProps.data.altName"
             />
@@ -120,12 +120,12 @@ const { imageSrc } = getImageSrc()
 
 const banners = ref([
   {
-    imgPath: '/banner/0001.png',
+    imgPath: '/banner/home_01_pc.jpg',
     altName: 'book-2',
     linkTo: '/bookstore/AA00002'
   },
   {
-    imgPath: '/banner/0003.png',
+    imgPath: '/banner/home_02_pc.jpg',
     altName: 'book-1',
     linkTo: '/bookstore/AA00001'
   }
@@ -183,6 +183,25 @@ const features = [
       '從各項登記之基礎點切入，彙整各項登記可能會遇到的問題並加以說明，讓你熟稔各項公司登記後，即使遇到再複雜的變更登記案件，也能輕鬆掌握要點。'
   }
 ]
+
+onMounted(() => {
+  window.addEventListener('resize', () => {
+    const windowWidth = window.innerWidth
+    if (windowWidth > 1200) {
+      banners.value[0].imgPath = '/banner/home_01_pc.jpg'
+      banners.value[1].imgPath = '/banner/home_02_pc.jpg'
+    } else if (windowWidth <= 1200) {
+      banners.value[0].imgPath = '/banner/home_01_pad.jpg'
+      banners.value[1].imgPath = '/banner/home_02_pad.jpg'
+    } else if (windowWidth <= 768) {
+      banners.value[0].imgPath = '/banner/home_01_t.jpg'
+      banners.value[1].imgPath = '/banner/home_02_t.jpg'
+    } else if (windowWidth <= 600) {
+      banners.value[0].imgPath = '/banner/home_01_m.jpg'
+      banners.value[1].imgPath = '/banner/home_02_m.jpg'
+    }
+  })
+})
 </script>
 
 <style lang="scss" scoped></style>

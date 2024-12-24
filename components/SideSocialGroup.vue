@@ -34,12 +34,7 @@ watch(route, (newRoute) => {
 
 const showSocialGroup = (pathname) => {
   const sideSocialGroup = document.querySelector('.sideSocialGroup')
-  if (
-    pathname === '/' ||
-    pathname === '/shoppingInfo' ||
-    pathname === '/faq' ||
-    pathname === '/files'
-  ) {
+  if (pathname === '/') {
     sideSocialGroup.style.display = 'block'
   } else {
     sideSocialGroup.style.display = 'none'
