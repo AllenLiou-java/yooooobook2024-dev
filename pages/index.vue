@@ -188,7 +188,7 @@ onMounted(() => {
   window.addEventListener('resize', () => {
     const windowWidth = window.innerWidth
 
-    if (windowWidth <= 600) {
+    if (windowWidth <= 450) {
       banners.value[0].imgPath = '/banner/home_01_m.jpg'
       banners.value[1].imgPath = '/banner/home_02_m.jpg'
     } else if (windowWidth <= 768) {
