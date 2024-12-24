@@ -187,18 +187,19 @@ const features = [
 onMounted(() => {
   window.addEventListener('resize', () => {
     const windowWidth = window.innerWidth
-    if (windowWidth > 1200) {
-      banners.value[0].imgPath = '/banner/home_01_pc.jpg'
-      banners.value[1].imgPath = '/banner/home_02_pc.jpg'
-    } else if (windowWidth <= 1200) {
-      banners.value[0].imgPath = '/banner/home_01_pad.jpg'
-      banners.value[1].imgPath = '/banner/home_02_pad.jpg'
+
+    if (windowWidth <= 600) {
+      banners.value[0].imgPath = '/banner/home_01_m.jpg'
+      banners.value[1].imgPath = '/banner/home_02_m.jpg'
     } else if (windowWidth <= 768) {
       banners.value[0].imgPath = '/banner/home_01_t.jpg'
       banners.value[1].imgPath = '/banner/home_02_t.jpg'
-    } else if (windowWidth <= 600) {
-      banners.value[0].imgPath = '/banner/home_01_m.jpg'
-      banners.value[1].imgPath = '/banner/home_02_m.jpg'
+    } else if (windowWidth <= 1200) {
+      banners.value[0].imgPath = '/banner/home_01_pad.jpg'
+      banners.value[1].imgPath = '/banner/home_02_pad.jpg'
+    } else {
+      banners.value[0].imgPath = '/banner/home_01_pc.jpg'
+      banners.value[1].imgPath = '/banner/home_02_pc.jpg'
     }
   })
 })
