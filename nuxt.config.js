@@ -3,7 +3,7 @@
 export default defineNuxtConfig({
   css: ['~/assets/style/all.scss', '~/assets/style/vendor/themes/aura/aura-light/blue/theme.scss'],
   compatibilityDate: '2024-04-03',
-  devtools: { enabled: true },
+  devtools: { enabled: false },
   app: {
     head: {
       charset: 'utf-8',

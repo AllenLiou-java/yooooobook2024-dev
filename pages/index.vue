@@ -13,7 +13,7 @@
         <div class="relative mx-auto">
           <NuxtLink :to="slotProps.data.linkTo">
             <img
-              class="w-full max-h-[calc(100vh-96px)] object-contain object-center"
+              class="object-contain object-center w-full"
               :src="imageSrc(slotProps.data.imgPath)"
               :alt="slotProps.data.altName"
             />
@@ -123,11 +123,6 @@ const banners = ref([
     imgPath: '/banner/home_01_pc.jpg',
     altName: 'book-2',
     linkTo: '/bookstore/AA00002'
-  },
-  {
-    imgPath: '/banner/home_02_pc.jpg',
-    altName: 'book-1',
-    linkTo: '/bookstore/AA00001'
   }
 ])
 
@@ -184,23 +179,42 @@ const features = [
   }
 ]
 
+function getBannerInfo(windowWidth = 1400) {
+  const banners = [
+    {
+      imgPath: '',
+      altName: 'book-2',
+      linkTo: '/bookstore/AA00002'
+    },
+    {
+      imgPath: '',
+      altName: 'book-1',
+      linkTo: '/bookstore/AA00001'
+    }
+  ]
+  if (windowWidth <= 450) {
+    banners[0].imgPath = '/banner/home_01_m.jpg'
+    banners[1].imgPath = '/banner/home_02_m.jpg'
+  } else if (windowWidth <= 768) {
+    banners[0].imgPath = '/banner/home_01_t.jpg'
+    banners[1].imgPath = '/banner/home_02_t.jpg'
+  } else if (windowWidth <= 1200) {
+    banners[0].imgPath = '/banner/home_01_pad.jpg'
+    banners[1].imgPath = '/banner/home_02_pad.jpg'
+  } else {
+    banners[0].imgPath = '/banner/home_01_pc.jpg'
+    banners[1].imgPath = '/banner/home_02_pc.jpg'
+  }
+
+  return banners
+}
+
 onMounted(() => {
+  const windowWidth = window.innerWidth
+  banners.value = getBannerInfo(windowWidth)
   window.addEventListener('resize', () => {
     const windowWidth = window.innerWidth
-
-    if (windowWidth <= 450) {
-      banners.value[0].imgPath = '/banner/home_01_m.jpg'
-      banners.value[1].imgPath = '/banner/home_02_m.jpg'
-    } else if (windowWidth <= 768) {
-      banners.value[0].imgPath = '/banner/home_01_t.jpg'
-      banners.value[1].imgPath = '/banner/home_02_t.jpg'
-    } else if (windowWidth <= 1200) {
-      banners.value[0].imgPath = '/banner/home_01_pad.jpg'
-      banners.value[1].imgPath = '/banner/home_02_pad.jpg'
-    } else {
-      banners.value[0].imgPath = '/banner/home_01_pc.jpg'
-      banners.value[1].imgPath = '/banner/home_02_pc.jpg'
-    }
+    banners.value = getBannerInfo(windowWidth)
   })
 })
 </script>
