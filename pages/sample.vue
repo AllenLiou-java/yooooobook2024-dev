@@ -1,6 +1,5 @@
 <template>
   <div class="bg-primary container py-60">
-    <h1>Test vercel</h1>
     <button @click="addCount">加1</button>
     <p>{{ counter }}</p>
     <p>{{ doubleCount }}</p>
